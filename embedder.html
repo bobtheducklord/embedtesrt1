@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
 </head>
 <body>
@@ -10,23 +10,32 @@
         let url = prompt("url?")
         if (url) {
             var win;
-            document.querySelector('button'). onclick = function() {
-            if (win) {
-            win.focus();
-        }
-        else {
-            win = window.open();
-            win.document.body.style.margin = '0';
-            win. document.body.style.height = '100%';
-            var iframe = win.document.createElement('iframe');
-            iframe.style.border='none';
-            iframe.style.width = '100%' ;
-            iframe.style.height = '100%' ;
-            iframe.style.margin = '0';
-            iframe.src = url;
-            win.document.body.appendChild(iframe);
-            }
-            location.reload();
+            document.querySelector('button').onclick = function() {
+                if (win) {
+                    win.focus();
+                }
+                else {
+                    win = window.open();
+
+                    // favicon
+                    var link = win.document.createElement("link");
+                    link.rel = "icon";
+                    link.href = "green.png";
+                    win.document.head.appendChild(link);
+
+                    win.document.body.style.margin = '0';
+                    win.document.body.style.height = '100%';
+
+                    var iframe = win.document.createElement('iframe');
+                    iframe.style.border='none';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.margin = '0';
+                    iframe.src = url;
+
+                    win.document.body.appendChild(iframe);
+                }
+                location.reload();
             }
         }
     </script>
